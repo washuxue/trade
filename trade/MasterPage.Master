@@ -1,0 +1,158 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="trade.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <table align="center" style="width: 1198px; height: 1000px">
+            <tr>
+                <td colspan="2" style="position: relative; width: 1198px; height: 240px; background-image: url('/images/head.jpg'); background-repeat: no-repeat;">
+                    <div style="position: absolute; bottom: 0; left: 100px">
+                        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BackColor="#FFFBD6" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="XX-Large" ForeColor="#990000" StaticSubMenuIndent="10px">
+                            <DynamicHoverStyle BackColor="#990000" ForeColor="White" />
+                            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                            <DynamicMenuStyle BackColor="#FFFBD6" />
+                            <DynamicSelectedStyle BackColor="#FFCC66" />
+                            <Items>
+                                <asp:MenuItem Text="首页" NavigateUrl="~/Default.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="推荐商品" NavigateUrl="~/List.aspx?point=introduction"></asp:MenuItem>
+                                <asp:MenuItem Text="最新商品" NavigateUrl="~/List.aspx?point=new"></asp:MenuItem>
+                                <asp:MenuItem Text="购物车" NavigateUrl="~/ShoppingCart.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="我的订单" NavigateUrl="~/MyOrder.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="网站留言" NavigateUrl="~/LeaveWord.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="我的留言" NavigateUrl="~/MyLeaveWord.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="账号信息" NavigateUrl="~/UserInfo.aspx"></asp:MenuItem>
+                            </Items>
+                            <StaticHoverStyle BackColor="#990000" ForeColor="White" />
+                            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                            <StaticSelectedStyle BackColor="#FFCC66" />
+                        </asp:Menu>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 204px; height: 177px; vertical-align: top; border-left-width: thin">
+                    <table id="nologin" runat="server" style="width: 204px; height: 177px">
+                        <tr>
+                            <td style="background-color: #99FFCC;width:204px;height:35px">用户登录</td>
+
+                        </tr>
+                        <tr>
+                            <td style="width:204px;height:35px">用户名：
+                                <asp:TextBox ID="TextBox1" runat="server" Width="100px" Height="25px"></asp:TextBox>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td  style="width:204px;height:35px">密码：　
+                                <asp:TextBox ID="TextBox2" runat="server" Width="100px" Height="25px" TextMode="Password"></asp:TextBox>
+                            </td>
+
+                        </tr>
+           
+                        <tr>
+                            <td>
+                                
+                                &nbsp;&nbsp;&nbsp;
+                                
+                                <asp:ImageButton ID="ImageButton1" runat="server" Width="44px" Height="18px" ImageUrl="~/images/登录按钮.jpg" OnClick="ImageButton1_Click" />
+                                &nbsp;
+                                <asp:ImageButton ID="ImageButton2" runat="server" Width="44px" Height="18px" ImageUrl="~/images/注册按钮.jpg" OnClick="ImageButton2_Click" />
+                            </td>
+
+                        </tr>
+
+                    </table>
+                    <table id="login" runat="server" visible=false style="width: 204px; height: 177px">
+                        <tr>
+                            <td align="center" valign="top" class="auto-style1"></td>
+
+                        </tr>
+                        <tr>
+                            <td align="center">欢迎光临,<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">退出</asp:LinkButton>
+                            </td>
+
+                        </tr>
+                    </table>
+                </td>
+                <td style="width: 994px;vertical-align :top" rowspan="2">
+                    <div>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td align="left" style="width: 204px;height:600px vertical-align: top">
+                    <table style="width: 204px; height: 600px; vertical-align: top">
+                        <tr>
+                            <td style="height: 35px; background-color: #99FFCC;">商品分类</td>
+
+                        </tr>
+                        <tr>
+                            <td align="center" style="width: 204px; vertical-align: top;">
+                                <asp:DataList ID="DataList1" runat="server" OnItemCommand="DataList1_ItemCommand">
+                                    <ItemTemplate>
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td>
+                                                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Photo") %>' Height="50px" Width="50px" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <asp:LinkButton ID="LinkButton1" runat="server" Text='<%# Eval("ClassName")%>' CommandName="ClassView" CommandArgument='<%# Eval("ClassID")%>'>LinkButton</asp:LinkButton>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </ItemTemplate>
+                                </asp:DataList>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+
+                        </tr>
+                    </table>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td align="center" colspan="2" valign="top" style="width: 1198px; height: 30px; background-color: #C0C0C0;">
+
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">首页</asp:HyperLink>
+                    &nbsp; <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Default.aspx">配送范围</asp:HyperLink>
+                    &nbsp; <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Default.aspx">退换货原则</asp:HyperLink>
+                    &nbsp; <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Default.aspx">联系客服</asp:HyperLink>
+                    &nbsp; <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Default.aspx">隐私政策</asp:HyperLink>
+                    &nbsp; <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Default.aspx">友情链接</asp:HyperLink>
+                    &nbsp; <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/Manage/ManageHome.aspx">管理员入口</asp:HyperLink>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="width: 1198px; height: 50px; text-align: center; background-color: #C0C0C0;">安徽大学本科毕业设计
+                </td>
+            </tr>
+        </table>
+
+
+    </form>
+</body>
+</html>

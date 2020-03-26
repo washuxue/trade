@@ -1,0 +1,65 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ManageMasterPage.master.cs" Inherits="trade.Manage.ManageMasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <table align="center" style="width: 1000px; height: 700px">
+            <tr>
+                <td align="center" colspan="2" style="width:1000px;height:50px; background-color: #99CCFF;">校园物品交易系统管理中心</td>
+            </tr>
+            <tr>
+                <td style="width:200px;height:600px;vertical-align:top">
+                    <asp:TreeView ID="TreeView1" runat="server">
+                        <Nodes>
+                            <asp:TreeNode Text="首页" Value="首页" NavigateUrl="~/Manage/ManageHome.aspx"></asp:TreeNode>
+                            <asp:TreeNode Text="商品管理" Value="商品管理">
+                                <asp:TreeNode Text="添加新商品" Value="添加商品" NavigateUrl="~/Manage/AddGood.aspx"></asp:TreeNode>
+                                <asp:TreeNode Text="管理已有商品" Value="所有商品" NavigateUrl="~/Manage/ManageGood.aspx"></asp:TreeNode>
+                                <asp:TreeNode Text="添加新类别" Value="添加类别" NavigateUrl="~/Manage/AddClass.aspx"></asp:TreeNode>
+                                <asp:TreeNode Text="管理已有类别" Value="所有类比" NavigateUrl="~/Manage/ManageClass.aspx"></asp:TreeNode>
+                            </asp:TreeNode>
+                            <asp:TreeNode Text="订单管理" Value="订单管理">
+                                <asp:TreeNode NavigateUrl="~/Manage/ManageOrderNotPay.aspx" Text="待付款订单" Value="待付款订单"></asp:TreeNode>
+                                <asp:TreeNode Text="待发货订单" Value="待发货订单" NavigateUrl="~/Manage/ManageOrderSend.aspx"></asp:TreeNode>
+                                <asp:TreeNode Text="待收货订单" Value="待收货订单" NavigateUrl="~/Manage/ManageOrderReceive.aspx"></asp:TreeNode>
+                                <asp:TreeNode Text="已成交订单" Value="已成交订单" NavigateUrl="~/Manage/ManageOrderFinish.aspx"></asp:TreeNode>
+                                <asp:TreeNode NavigateUrl="~/Manage/ManageOrderRefund.aspx" Text="已退款订单" Value="已退款订单"></asp:TreeNode>
+                                <asp:TreeNode NavigateUrl="~/Manage/SearchOrder.aspx" Text="查找订单" Value="查找订单"></asp:TreeNode>
+                            </asp:TreeNode>
+                            <asp:TreeNode Text="用户管理" Value="用户管理">
+                                <asp:TreeNode Text="添加会员" Value="添加会员" NavigateUrl="~/Manage/AddUser.aspx"></asp:TreeNode>
+                                <asp:TreeNode Text="会员管理" Value="会员管理" NavigateUrl="~/Manage/ManageUser.aspx"></asp:TreeNode>
+                                <asp:TreeNode NavigateUrl="~/Manage/AddAdmin.aspx" Text="添加管理员" Value="添加管理员"></asp:TreeNode>
+                                <asp:TreeNode Text="管理员管理" Value="管理员管理" NavigateUrl="~/Manage/ManageAdmin.aspx"></asp:TreeNode>
+                            </asp:TreeNode>
+                            <asp:TreeNode Text="系统管理" Value="系统管理">
+                                <asp:TreeNode NavigateUrl="~/Manage/ManageLeaveWord.aspx" Text="留言管理" Value="留言管理"></asp:TreeNode>
+                                <asp:TreeNode NavigateUrl="~/Manage/AdminInfo.aspx" Text="账号信息" Value="修改个人信息"></asp:TreeNode>
+                                <asp:TreeNode NavigateUrl="~/Manage/ManageImage.aspx" Text="上传图片" Value="上传图片"></asp:TreeNode>
+                            </asp:TreeNode>
+                            <asp:TreeNode Text="退出系统" Value="退出系统" NavigateUrl="~/Manage/AdminLogin.aspx"></asp:TreeNode>
+                        </Nodes>
+                    </asp:TreeView>
+                </td>
+                <td style="width:800px;height:600px;vertical-align:top">        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div></td>
+     
+            </tr>
+            <tr>
+                <td align="center" colspan="2" style="width:800px;height:50px; background-color: #C0C0C0;">安徽大学本科毕业设计</td>
+            </tr>
+        </table>
+
+    </form>
+</body>
+</html>
