@@ -15,7 +15,7 @@ public class config
         //
     }
     //NATAPP内网穿透地址
-    public static string nataddress = "http://riu4h6.natappfree.cc";
+    public static string nataddress = "http://ahugoodstrading.natapp1.cc/";
 
     // 应用ID,您的APPID
     public static string app_id = "2016101700709209";

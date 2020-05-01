@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -37,7 +39,8 @@ namespace trade.Manage
             else
             {
                 string adminname = TextBox1.Text.Trim();
-                string password = TextBox2.Text.Trim();
+                string hash = TextBox2.Text.Trim();
+                string password = BitConverter.ToString(MD5.Create().ComputeHash(Encoding.Default.GetBytes(hash))).Replace("-", "");
                 SqlDataReader dr = db.redr("select * from Admin where AdminName='" +
                     adminname + "'and Password='" + password + "'");
                 if (dr.HasRows)

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -54,7 +56,8 @@ namespace trade
             int userid = int.Parse(Session["UserID"].ToString());
             if (TextBox4.Text.Trim() == TextBox5.Text.Trim())
             {
-                string password = TextBox4.Text.Trim();
+                string hash = TextBox4.Text.Trim();
+                string password = BitConverter.ToString(MD5.Create().ComputeHash(Encoding.Default.GetBytes(hash))).Replace("-", "");
                 string realname = TextBox6.Text.Trim();
                 string sex = TextBox7.Text.Trim();
                 string phone = TextBox8.Text.Trim();

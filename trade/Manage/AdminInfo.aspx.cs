@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -49,7 +51,8 @@ namespace trade.Manage
             int adminid = int.Parse(Session["AdminID"].ToString());
             if (TextBox2.Text.Trim() == TextBox3.Text.Trim())
             {
-                string password = TextBox2.Text.Trim();
+                string hash= TextBox2.Text.Trim();
+                string password = BitConverter.ToString(MD5.Create().ComputeHash(Encoding.Default.GetBytes(hash))).Replace("-", "");
                 string realname = TextBox4.Text.Trim();          
                 string email = TextBox5.Text.Trim();          
                 string sql = "update Admin set Password='" + password + "',RealName='" + realname + "',Email='" + email + "' where AdminID=" + adminid;

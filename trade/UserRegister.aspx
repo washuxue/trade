@@ -16,7 +16,7 @@
             <tr>
         <td align="right" style="width: 200px; height: 25px">密码：</td>
         <td>
-            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox2" runat="server" TextMode="Password"></asp:TextBox>
                 </td>
     </tr>
             <tr>
